@@ -93,7 +93,6 @@ def delete_note():
 
 def main():
     while True:
-        print()
         print("===== DIGITAL DIARY =====")
         print("1. Add note")
         print("2. View all notes")
