@@ -2,23 +2,18 @@ from datetime import datetime
 FILE_NAME = "diary.txt" 
 def load_notes():
     notes = []
-    try:
-        file = open(FILE_NAME, "r")
+    with open(FILE_NAME, "r") as file:
         for line in file:
             line = line.strip()
-            if line != "": 
+            if line != "":
                 parts = line.split("|", 1)
                 notes.append([parts[0], parts[1]])
-        file.close()
-    except FileNotFoundError:
-        pass   
     return notes
 
 def save_notes(notes):
-    file = open(FILE_NAME, "w") 
-    for note in notes:
-        file.write(note[0] + "|" + note[1] + "\n") 
-    file.close()
+    with open(FILE_NAME, "w") as file:
+        for note in notes:
+            file.write(note[0] + "|" + note[1] + "\n")
 
 def is_valid_date(date_text):
     if len(date_text) != 10:
